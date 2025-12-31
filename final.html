@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy New Year ❤️</title>
+
+<style>
+body{
+  margin:0;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-family:Arial, sans-serif;
+  text-align:center;
+  overflow:hidden;
+  padding:20px;
+}
+
+/* TEXT CONTAINER */
+.message{
+  max-width:520px;
+  line-height:1.7;
+}
+
+/* FADE IN EFFECT */
+.fade{
+  opacity:0;
+  animation: fadeIn 1.5s ease forwards;
+}
+
+.delay1{ animation-delay:0.5s; }
+.delay2{ animation-delay:2s; }
+.delay3{ animation-delay:4s; }   /* FOREVER YOURS delay */
+
+@keyframes fadeIn{
+  to{ opacity:1; }
+}
+
+/* BIG FINAL TEXT */
+.final-line{
+  font-size:1.7em;   /* Bigger final line */
+  margin-top:15px;
+}
+
+/* FLOATING HEARTS */
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:18px;
+  animation: floatUp 6s linear infinite;
+  opacity:0.8;
+  pointer-events:none;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);}
+  to{transform:translateY(-110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="message">
+
+  <p class="fade delay1">
+    <strong>Happy new year daaa purushaaaaaa….. 😘😘🥳🥳</strong>
+  </p>
+
+  <p class="fade delay2">
+    Waiting for many more celebrations with you<br>
+    <strong>Mr. Bharanidharan 👑</strong>
+  </p>
+
+  <p class="fade delay3 final-line">
+    Forever yours ❤️<br>
+    <strong>Mrs. Harini Priya Bharanidharan</strong>
+  </p>
+
+</div>
+
+<script>
+/* FLOATING HEARTS SCRIPT */
+setInterval(()=>{
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = (12 + Math.random()*20) + "px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
