@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Countdown ❤️</title>
+
+<style>
+body{
+  margin:0;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  overflow:hidden;
+}
+
+#countdown{
+  font-size:2em;
+  margin-bottom:20px;
+}
+
+a{
+  margin-top:30px;
+  padding:12px 30px;
+  background:white;
+  color:#ff4d6d;
+  text-decoration:none;
+  border-radius:25px;
+  font-weight:bold;
+}
+
+/* HEARTS */
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:18px;
+  animation: floatUp 6s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);}
+  to{transform:translateY(-110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="countdown"></div>
+<p>Almost there… ❤️</p>
+
+<a href="photo1.html">Continue 💕</a>
+
+<script>
+const newYear=new Date("January 1, 2026 00:00:00").getTime();
+setInterval(()=>{
+  const now=new Date().getTime();
+  const diff=newYear-now;
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  const m=Math.floor((diff/(1000*60))%60);
+  const s=Math.floor((diff/1000)%60);
+  document.getElementById("countdown").innerHTML=
+    `${d}d ${h}h ${m}m ${s}s`;
+},1000);
+
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(12+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
