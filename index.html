@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our First New Year ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0.9; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* COVER */
+#cover {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #ff5f8d, #ff9a9e);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#cover img {
+  width: 80%;
+  max-width: 380px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+#cover h1 {
+  margin-top: 20px;
+  font-size: 2.1em;
+}
+
+#cover p {
+  opacity: 0.9;
+}
+
+#enterBtn {
+  margin-top: 25px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4d6d;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+/* MAIN */
+.hidden { display: none; }
+
+h2 {
+  margin-top: 30px;
+  font-size: 2.3em;
+}
+
+#countdown {
+  font-size: 1.4em;
+  margin: 20px 0;
+}
+
+.slideshow {
+  width: 80%;
+  max-width: 400px;
+  margin: 30px auto;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+}
+
+.slideshow img {
+  width: 100%;
+  display: none;
+}
+
+.slideshow img.active {
+  display: block;
+}
+
+.message {
+  margin: 30px;
+  font-size: 1.15em;
+  line-height: 1.7;
+}
+
+footer {
+  margin-bottom: 30px;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (12 + Math.random() * 20) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+<!-- COVER -->
+<div id="cover">
+  <img src="https://drive.google.com/uc?export=view&id=1FPaIjFDv7bUxRUXNGGeEGsulQ_jxV7Ua">
+  <h1>Nick & Judy ❤️</h1>
+  <p>Our First New Year Together</p>
+  <button id="enterBtn">Enter 💕</button>
+</div>
+
+<!-- MAIN -->
+<div id="main" class="hidden">
+
+  <h2>Happy New Year, My Love ❤️</h2>
+
+  <div id="countdown"></div>
+
+  <div class="slideshow">
+    <img src="https://drive.google.com/uc?export=view&id=1FRhpJnK1Ii5EB_hfrr1V7D7COdMClqnL" class="active">
+    <img src="https://drive.google.com/uc?export=view&id=1FTbqOJzI5a3yiuZqSaMfFJOHsuGy1gkV">
+    <img src="https://drive.google.com/uc?export=view&id=1FU-9LVTvUYu2zJXqZ3uVPLdjbT4uJP__">
+    <img src="https://drive.google.com/uc?export=view&id=1FUIx33xIvZMSWL1nDAi3m5dv_YSqv-oa">
+    <img src="https://drive.google.com/uc?export=view&id=1FW13UKsxpRvkGxkKAcg_X2nlvUeuYzsy"
+  </div>
+
+  <div class="message">
+    Like Nick and Judy,<br>
+    we learned, we grew, we chose each other.<br><br>
+    This New Year,
+    I choose you again. ❤️
+  </div>
+
+  <footer>
+    — always yours 💗
+  </footer>
+
+</div>
+
+<script>
+// Enter
+document.getElementById("enterBtn").onclick = () => {
+  document.getElementById("cover").style.display = "none";
+  document.getElementById("main").classList.remove("hidden");
+};
+
+// Countdown
+const newYear = new Date("January 1, 2026 00:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = newYear - now;
+
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff / (1000*60*60)) % 24);
+  const m = Math.floor((diff / (1000*60)) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  document.getElementById("countdown").innerHTML =
+    `Countdown to us 💕<br>${d}d ${h}h ${m}m ${s}s`;
+}, 1000);
+
+// Slideshow
+let i = 0;
+const imgs = document.querySelectorAll(".slideshow img");
+setInterval(() => {
+  imgs[i].classList.remove("active");
+  i = (i + 1) % imgs.length;
+  imgs[i].classList.add("active");
+}, 2500);
+</script>
+
+</body>
+</html>
