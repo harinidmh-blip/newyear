@@ -1,42 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Our New Year ❤️</title>
-  <style>
-    body{
-      margin:0;
-      background: linear-gradient(135deg,#ff758c,#ff7eb3);
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-family:Arial, sans-serif;
-      text-align:center;
-    }
-    img{
-      max-width:80%;
-      border-radius:20px;
-      box-shadow:0 0 20px rgba(255,255,255,0.4);
-    }
-    a{
-      margin-top:25px;
-      padding:10px 25px;
-      background:white;
-      color:#ff4d6d;
-      text-decoration:none;
-      border-radius:25px;
-      font-weight:bold;
-    }
-  </style>
+<title>Photo 1 ❤️</title>
+
+<style>
+body{
+  margin:0;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3);
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  overflow:hidden;
+}
+
+.fade-down{opacity:0;transform:translateY(-40px);animation:fade 1.2s forwards;}
+.fade-up{opacity:0;transform:translateY(40px);animation:fade 1.2s forwards;}
+.zoom-in{opacity:0;transform:scale(0.85);animation:zoom 1.2s forwards;}
+.fade-right{opacity:0;transform:translateX(-40px);animation:fadeR 1.2s forwards;}
+.fade-only{opacity:0;animation:fadeOnly 1.5s forwards;}
+
+@keyframes fade{to{opacity:1;transform:translateY(0);}}
+@keyframes zoom{to{opacity:1;transform:scale(1);}}
+@keyframes fadeR{to{opacity:1;transform:translateX(0);}}
+@keyframes fadeOnly{to{opacity:1;}}
+
+img{max-width:80%;border-radius:20px;box-shadow:0 0 20px rgba(255,255,255,0.4);}
+a{margin-top:20px;padding:10px 25px;background:white;color:#ff4d6d;text-decoration:none;border-radius:25px;font-weight:bold;}
+
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:18px;
+  animation: floatUp 6s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(0);}
+  to{transform:translateY(-110vh);opacity:0;}
+}
+</style>
 </head>
+
 <body>
 
-<img src="1.jpg">
-<p>My first New Year with you ❤️</p>
-
+<img src="1.jpg" class="fade-down">
+<p class="fade-down">My first New Year with you — and it already feels special ❤️</p>
 <a href="photo2.html">Next 💕</a>
+
+<script>
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize=(12+Math.random()*20)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+</script>
 
 </body>
 </html>
